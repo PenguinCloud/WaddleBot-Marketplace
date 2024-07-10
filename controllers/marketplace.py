@@ -36,7 +36,13 @@ def get():
     marketplace_module = db(db.marketplace_modules.name == name).select().first()
     if not marketplace_module:
         return dict(msg="Marketplace Module does not exist.")
-    return dict(marketplace_module=marketplace_module)
+
+    # Also return the marketplace module type name part of the response
+    module_type = db(db.module_types.id == marketplace_module.module_type_id).select().first()
+    marketplace_module = marketplace_module.as_dict()
+    marketplace_module['module_type_name'] = module_type.name    
+
+    return marketplace_module
 
 # Get all marketplace modules.
 def get_all():

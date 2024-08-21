@@ -8,7 +8,12 @@ import logging
 def index(): return dict(message="hello from marketplace.py")
 
 # Function to decode names with space in
+from urllib.parse import unquote
+
 def decode_name(name):
+    if not name:
+        return None
+    return unquote(name)
     if not name:
         return None
     name = name.replace("%20", " ")

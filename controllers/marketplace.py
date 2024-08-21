@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from urllib.parse import unquote
+import logging
 
 
 # try something like
@@ -65,12 +66,8 @@ def get_by_url():
 
     if not url:
         return dict(msg="No URL given.")
-    
-    print("THE URL IS: ", url)
 
     url = unquote(url)
-
-    print("THE UNQOUTED URL IS: ", url)
 
     marketplace_module = db(db.marketplace_modules.gateway_url == url).select().first()
     if not marketplace_module:

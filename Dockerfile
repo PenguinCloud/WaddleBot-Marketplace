@@ -1,4 +1,4 @@
-FROM ghcr.io/penguincloud/core:v5.0.1 AS BUILD
+FROM  ghcr.io/penguincloud/web2py-core:latest AS BUILD
 LABEL company="Penguin Tech Group LLC"
 LABEL org.opencontainers.image.authors="info@penguintech.group"
 LABEL license="GNU AGPL3"
@@ -9,7 +9,7 @@ WORKDIR /opt/manager
 
 
 # PUT YER ARGS in here
-ARG APP_TITLE="PTGAPP" # Change this to actual title for Default
+ARG APP_TITLE="WB-Marketplace" #Change this to actual title for Default
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local

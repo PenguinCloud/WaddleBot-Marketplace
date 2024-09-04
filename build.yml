@@ -1,3 +1,4 @@
+---
 - name: Building Image
   hosts: localhost
   connection: local
